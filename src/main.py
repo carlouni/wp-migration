@@ -1,3 +1,15 @@
+###########################################################
+#
+# This python script is used for taking a WP site's DB and
+# loading it in a different host with a different URL.
+#
+# Written by : Gonzalo Cardenas
+# Created date: March 13, 2018
+# Tested with : Python 3.6.4
+# Script Revision: 0.1
+#
+##########################################################
+
 from dotenv import load_dotenv
 load_dotenv()
 
