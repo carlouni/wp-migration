@@ -52,6 +52,17 @@ print('DB destination downloaded and backed up.')
 # replace URLs inside the .sql file
 print('Replacing URLs on the DB...')
 
+# replacing URLs strings stored within serialized variables
+len_orgin_url = len(os.getenv('ORIGIN_SITE_URL'))
+len_destination_url = len(os.getenv('DESTINATION_SITE_URL'))
+
+#Assume maximum length of full URL is the base URL + 100
+for i in range(100) :
+	os.system('sed -i \'s/' + re.escape('s:' + str(len_orgin_url + i) + ':\\\"' +
+				os.getenv('ORIGIN_SITE_URL')) + '/' + re.escape('s:' + str(len_destination_url + i) +
+				':\"' + os.getenv('DESTINATION_SITE_URL')) + '/g\' ' + data_path)
+
+# Replace URL stored as normal strings
 result = os.system('sed -i \'s/' + re.escape(os.getenv('ORIGIN_SITE_URL')) + '/' +
 	re.escape(os.getenv('DESTINATION_SITE_URL')) + '/g\' ' + data_path)
 
